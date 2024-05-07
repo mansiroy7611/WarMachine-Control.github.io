@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32-CAM Robot</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+<!-- <style>
+
+</style>     -->
+</head>
+<body>
+    <div id="nav-bar">
+        <div class="nav-container">WAR MACHINE</div>
+    </div>
+    <div id="second-bar">
+        <div class="video-container">
+            <div class="video">
+                <div class="video-box">
+                    <iframe id="stream" width="345" height="175"></iframe>
+                </div>
+            </div>
+            <div class="connect">
+                <input type="text" id="ip" placeholder="IP Address">
+                <button type="submit" onclick="changeIP()">connect</button>
+            </div>
+        </div>
+        <div class="video-container1">
+            <div class="video">
+                <div class="video-box">
+                    <iframe id="stream" width="345" height="175"></iframe>
+                </div>
+            </div>
+            <div class="connect">
+                <input type="text" id="ip" placeholder="IP Address">
+                <button type="submit" onclick="changeIP()">connect</button>
+            </div>
+        </div>
+        <div class="Data-container">
+            <div class="headline-data">
+                <h1>DATA :</h1>
+            </div>
+        </div>
+        
+    </div>
+    <div id="third-bar">
+        <div class="left">
+            <div class="mode1">
+                <div class="daba1">Control Mode</div>
+            </div>
+            <div class="mode2">
+                <div class="daba2">Map Mode</div>
+            </div>
+            <div class="mode3">
+                <div class="daba3">Guard Mode</div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="headline">War Control</div>
+            <div class="subpart"  style="display: none;">
+                <table id="mainTable" style="width:600px;margin:auto;table-layout:fixed" CELLSPACING=10>
+                      <tr style="text-align:center">
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td class="button" ontouchstart='sendButtonInput("MoveCar","1")' ontouchend='sendButtonInput("MoveCar","0")' 
+                                           onmousedown='sendButtonInput("MoveCar","1")' onmouseup='sendButtonInput("MoveCar","0")'><span class="arrows" >&#8679;</span></td>
+                        <td></td>
+                      </tr>
+                      <tr style="text-align:center">
+                        <td ></td>
+                        <td ></td>
+                        <td class="button" ontouchstart='sendButtonInput("MoveCar","3")' ontouchend='sendButtonInput("MoveCar","0")'
+                                           onmousedown='sendButtonInput("MoveCar","3")' onmouseup='sendButtonInput("MoveCar","0")'><span class="arrows" >&#8678;</span></td>
+                        <td></td>    
+                        <td class="button" ontouchstart='sendButtonInput("MoveCar","4")' ontouchend='sendButtonInput("MoveCar","0")'
+                                           onmousedown='sendButtonInput("MoveCar","4")' onmouseup='sendButtonInput("MoveCar","0")'><span class="arrows" >&#8680;</span></td>
+                      </tr>
+                      <tr style="text-align:center">
+                        <td></td>
+                        <td ></td>
+                        <td ></td>
+                        <td class="button" ontouchstart='sendButtonInput("MoveCar","2")' ontouchend='sendButtonInput("MoveCar","0")'
+                                           onmousedown='sendButtonInput("MoveCar","2")' onmouseup='sendButtonInput("MoveCar","0")'><span class="arrows" >&#8681;</span></td>
+                        <td></td>
+                      </tr>
+                      <tr><tr/>
+                      <tr><tr/>
+                      <tr>
+                            <td style="text-align:left;font-size:25px"><b>Fire:</b></td>
+                            <td colspan=1></td>
+                            <td class="button"  ontouchstart='sendButtonInput("addmark","9")' 
+                                           onmousedown='sendButtonInput("gun","0")' onmouseup='sendButtonInput("gun","90")'>fire</td>
+                            
+                                           <td colspan=1></td>
+                            <td style="text-align:left;font-size:25px"><b>Engage:</b></td>
+                            <td colspan=1></td>
+                            <td class="button" ontouchstart='sendButtonInput("engage","0")' 
+                                           onmousedown='sendButtonInput("engage","0")' >fire</td>
+                            
+                      </tr>
+                      <tr>
+                            <td style="text-align:left;font-size:25px"><b>Mapmode:</b></td>
+                            <td colspan=1>
+                                <td class="button" ontouchstart='sendButtonInput("mapmode","0")' 
+                                           onmousedown='sendButtonInput("mapmode","0")' onclick="changeModeColor()">fire</td>
+                            </td>
+                            <td colspan=1></td>
+                            <td style="text-align:left;font-size:25px"><b>Addmark:</b></td>
+                            <td colspan=1>
+                            <td class="button" onclick="addMark()" ontouchstart='sendButtonInput("addmark","9")' 
+                                           onmousedown='sendButtonInput("addmark","9")' >fire</td>
+                            </td>
+                            
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;font-size:25px"><b>Autohome:</b></td>
+                            <td colspan=1>
+                            <td class="button" ontouchstart='sendButtonInput("home","1")' 
+                           onmousedown='sendButtonInput("home","1")' >fire</td>
+                            </td>
+                            <td colspan=1></td>
+                            <td style="text-align:left;font-size:25px"><b>Reset:</b></td>
+                            <td colspan=1>
+                            <td class="button" ontouchstart='sendButtonInput("reset","1")' 
+                           onmousedown='sendButtonInput("reset","1")' >fire</td>
+                            </td>
+                      </tr>
+                      <tr></tr>
+                      <tr>
+                        
+                        <td style="text-align:left;font-size:25px"><b>Speed:</b></td>
+                        <td>
+                         <div class="slidecontainer">
+                            <input type="range" min="0" max="255" value="180" class="slider" id="Speed" oninput='sendButtonInput("Speed",value)'>
+                          </div>
+                        </td>
+                        
+                      </tr>       
+                    </table>
+            </div>
+        </div>
+        <div class="right">
+            <div class="button">
+                <button type="button" class="btn" onclick="startChange()">Guard Mode</button>
+                <button type="button" class="btn" onclick="popup()">Control Mode</button>
+            </div>
+            <div class="target-container">
+                <!-- <div class="target-item" id="target1">Target 1</div>
+                    <div class="target-item"id="target2">Target 2</div>
+                    <div class="target-item"id="target3">Target 3</div>
+                    <div class="target-item"id="target4">Target 4</div>
+                    <div class="target-item"id="target5">Target 5</div>
+                    <div class="target-item"id="target6">Target 6</div> -->
+                <div class="target-above">
+                    <div class="target-item" id="target1">Target 1</div>
+                    <div class="target-item"id="target2">Target 2</div>
+                </div>
+                <div class="target-middle">
+                    <div class="target-item"id="target3">Target 3</div>
+                    <div class="target-item"id="target4">Target 4</div>
+                </div>
+                <div class="target-below">
+                    <div class="target-item"id="target5">Target 5</div>
+                    <div class="target-item"id="target6">Target 6</div>
+                </div>
+    </div>
+        </div>
+    </div>
+
+    <div class="login-popup" id="loginPopup">
+        <div class="login-container">
+            <input type="text" placeholder="LOGIN ID" class="id">
+            <input type="password" placeholder="PASSWORD" class="pass">
+            <button type="button" class="btn1" onclick="attemptLogin()">Login</button>
+            <button type="button" class="btn1" onclick="exit()">Exit</button>
+        </div>
+    </div>
+    <!-- <script>
+
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,12 @@
+<div class="target-container">
+            <div class="target-above">
+                <div class="target-item" id="target1">Target 1</div>
+                <div class="target-item"id="target2">Target 2</div>
+                <div class="target-item"id="target3">Target 3</div>
+            </div>
+            <div class="target-below">
+                <div class="target-item"id="target4">Target 4</div>
+                <div class="target-item"id="target5">Target 5</div>
+                <div class="target-item"id="target6">Target 6</div>
+            </div>
+</div>
