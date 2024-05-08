@@ -27,8 +27,8 @@ var webSocketCarInputUrl = "ws:\/\/" + window.location.hostname + "/CarInput";
       streamFrame.src = "http://" + ip + "/";
     }
     
-    // for second cam
-    function changeIP() {
+    
+      function changeIP() {
       var ip = document.getElementById("ipInput").value;
       var streamFrame = document.getElementById("stream");
       streamFrame.src = "http://" + ip + "/";
