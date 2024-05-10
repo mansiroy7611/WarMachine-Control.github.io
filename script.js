@@ -1,6 +1,8 @@
 var webSocketCarInputUrl = "ws:\/\/" + window.location.hostname + "/CarInput";      
       var websocketCarInput;
       
+      //Karan
+      
       function initCarInputWebSocket() 
       {
         websocketCarInput = new WebSocket(webSocketCarInputUrl);
@@ -12,7 +14,19 @@ var webSocketCarInputUrl = "ws:\/\/" + window.location.hostname + "/CarInput";
           sendButtonInput("pan", panButton.value);          
         };
         websocketCarInput.onclose   = function(event){setTimeout(initCarInputWebSocket, 2000);};
-        websocketCarInput.onmessage = function(event){};        
+        //Communication through esp
+        websocketCarInput.onmessage = function(event){
+          var data = event.data;
+          console.log('Received message: ' + data);
+          if(data=="target_hit"){
+            //changecolour function
+          }
+
+          var textarea = document.getElementById("esp-data-textarea");
+          textarea.value += data + "\n";
+          textarea.scrollTop = textarea.scrollHeight;
+        };       
+        //Communication through esp         
       }
       
       function sendButtonInput(key, value) 
@@ -39,24 +53,9 @@ var webSocketCarInputUrl = "ws:\/\/" + window.location.hostname + "/CarInput";
         event.preventDefault()
       });  
 
-
-      websocketCarInput.onmessage = function(event) {
-        var data = event.data;
-        // Parse the incoming data and update HTML elements
-        updateSensorData(data);
-      };
-      
-      function updateSensorData(data) {
-        // Parse the data and update the relevant HTML elements
-        // Example: Assuming the message is in the format "sensor1: value1"
-        var [sensor, value] = data.split(':');
-        var sensorElement = document.getElementById(sensor.trim());
-        if (sensorElement) {
-          sensorElement.innerHTML = value.trim();
-        }
-      }
-
       let currentTarget = 1;
+
+      //Karan
 
 function addMark() {
   const targetId = "target" + currentTarget;
