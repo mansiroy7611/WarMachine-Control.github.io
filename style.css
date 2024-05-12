@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color: #161616;
 }
 #nav-bar{
     width: 100%;
@@ -14,7 +14,7 @@
     font-size: 55px;
     font-weight: 800;
     color: #B6BBC4;
-    text-shadow: 4px 4px 10px #7f7f7f;
+    text-shadow: 4px 4px 10px black;
 }
 
 
@@ -36,7 +36,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 8px 4px #888888;
+    box-shadow: 0 2px 4px 2px #888888;
 }
 
 .video-box{
@@ -58,6 +58,7 @@
     border: none;
     border-bottom: 2px solid #888888;
     background: none;
+    color: white;
 }
 input::placeholder{
     color: white;
@@ -73,19 +74,23 @@ input::placeholder{
     flex: 1;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 8px 4px #888888;
+    box-shadow: 0 2px 4px 2px #888888;
 }
 .Data-container{
     margin: 12px;
     flex: 3;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 8px 4px #888888;
+    box-shadow: 0 2px 4px 2px #888888;
 }
-.headline-data{
-    margin: 20px;
-    color: #B6BBC4;
-    text-shadow: 2px 2px 5px #888888;
+#esp-data{
+    margin:12px 10px;
+}
+#esp-data textarea{
+    color: green;
+}
+#guard-mode-status {
+    color: green;
 }
 
 
@@ -128,13 +133,11 @@ input::placeholder{
     align-items: center;
     font-size: 24px;
     font-weight: 600;
-    background-color: #FF1700;
+    background-color: green;
     border: 2px solid black;
     box-shadow: 5px 5px #888888;
 }
-.daba1.active {
-    background-color: green; /* Color when active */
-}
+
 
 .daba2{
     width: 260px;
@@ -165,20 +168,24 @@ input::placeholder{
     border: 2px solid black;
     box-shadow: 5px 5px #888888
 }
+.daba3.active {
+    background-color: green; /* Color when active */
+}
 .middle{
     flex: 3;
     display: flex;
     flex-direction: column;
     color: #B6BBC4;
-    text-shadow: 2px 2px 5px #7f7f7f;
 }
 .headline{
     flex: .5;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 24px;
     font-weight: 600;
+    text-shadow: 2px 2px 5px black;
+
 }
 
 .dots-container {
@@ -204,13 +211,7 @@ input::placeholder{
     background-color: green;
     animation: blink 2.5s infinite ;/* Blinking animation*/
   }
-  .doty {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: yellow;
-    animation: blink 2.7s infinite ; /* Blinking animation */
-  }
+
   
   @keyframes blink {
     0% {
@@ -361,6 +362,18 @@ input::placeholder{
 }
 
 
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid black;
+    z-index: 9999;
+    display: none;
+}
 
 /* Center the login form */
 .login-popup {
